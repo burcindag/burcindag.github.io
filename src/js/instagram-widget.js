@@ -17,7 +17,7 @@ const settings = {
         "headers": {
           "x-rapidapi-key": "6035adb762msh8d5bf6dab9cbe0ap17d7cdjsn764aa1889d6b",
           "x-rapidapi-host": "instagram40.p.rapidapi.com"
-	      },
+	},
       }
     ).then((response) => {
       const data = response.data;
