@@ -12,14 +12,12 @@ const settings = {
 
 (async () => {
   try {
-    fetch(
-      "https://instagram40.p.rapidapi.com/proxy?url=https%3A%2F%2Fwww.instagram.com%2Fgraphql%2Fquery%2F%3Fquery_hash%3De769aa130647d2354c40ea6a439bfc08%26variables%3D%257B%2522id%2522%253A%25221226157729%2522%252C%2522first%2522%253A%25221%2522%252C%2522after%2522%253A%2522%2522%257D",
-      {
-        method: "GET",
-        headers: {
+    fetch("https://instagram40.p.rapidapi.com/proxy?url=https%3A%2F%2Fwww.instagram.com%2Fgraphql%2Fquery%2F%3Fquery_hash%3De769aa130647d2354c40ea6a439bfc08%26variables%3D%257B%2522id%2522%253A%25221226157729%2522%252C%2522first%2522%253A%25221%2522%252C%2522after%2522%253A%2522%2522%257D", {
+        "method": "GET",
+        "headers": {
           "x-rapidapi-key": "6035adb762msh8d5bf6dab9cbe0ap17d7cdjsn764aa1889d6b",
-          "x-rapidapi-host": "instagram40.p.rapidapi.com",
-        },
+          "x-rapidapi-host": "instagram40.p.rapidapi.com"
+	      },
       }
     ).then((response) => {
       const data = response.data;
