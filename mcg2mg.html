@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Micrograms to Milligrams Conversion</title>
+    <style>
+      /* Responsive design styles */
+      body {
+        font-size: 1.2rem;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #f8f8f8;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 100%;
+      }
+
+      input[type="number"] {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 1rem;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      button {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: none;
+        background-color: #2c3e50;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      button:hover {
+        background-color: #34495e;
+      }
+
+      output {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h2>Micrograms to Milligrams Conversion</h2>
+      <form>
+        <label for="micrograms">Micrograms (μg)</label>
+        <input type="number" id="micrograms" placeholder="Enter micrograms">
+
+        <button type="button" id="convertToMg">Convert to Milligrams</button>
+
+        <label for="milligrams">Milligrams (mg)</label>
+        <input type="number" id="milligrams" placeholder="Result" readonly>
+		
+		<label for="milligrams2">Milligrams (mg)</label>
+        <input type="number" id="milligrams2" placeholder="Enter Milligrams">
+
+        <button type="button" id="convertToMicrograms">Convert to Micrograms</button>
+
+        <label for="micrograms2">Micrograms (μg)</label>
+        <input type="number" id="micrograms2" placeholder="Result" readonly>
+      </form>
+    </main>
+
+    <script>
+      const microgramsInput = document.getElementById("micrograms");
+      const milligramsInput = document.getElementById("milligrams");
+      const convertToMgBtn = document.getElementById("convertToMg");
+      const convertToMicrogramsBtn = document.getElementById("convertToMicrograms");
+      const micrograms2Input = document.getElementById("micrograms2");
+	  const milligrams2Input = document.getElementById("milligrams2");
+
+      // Conversion functions
+      function microgramsToMilligrams(micrograms) {
+        return micrograms / 1000;
+      }
+
+      function milligramsToMicrograms(milligrams) {
+        return milligrams * 1000;
+  }
+
+  // Event listeners for conversion buttons
+  convertToMgBtn.addEventListener("click", () => {
+    const micrograms = Number(microgramsInput.value);
+    if (!isNaN(micrograms)) {
+      const milligrams = microgramsToMilligrams(micrograms);
+      milligramsInput.value = milligrams.toFixed(3);
+      micrograms2Input.value = "";
+	  milligrams2Input.value = "";
+    }
+  });
+
+  convertToMicrogramsBtn.addEventListener("click", () => {
+    const milligrams2 = Number(milligrams2Input.value);
+    if (!isNaN(milligrams2)) {
+      const micrograms2 = milligramsToMicrograms(milligrams2);
+      micrograms2Input.value = micrograms2.toFixed(3);
+      milligramsInput.value = "";
+	  microgramsInput.value = "";
+    }
+  });
+</script>
+  </body>
+</html>
