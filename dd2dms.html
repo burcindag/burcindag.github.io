@@ -8,13 +8,15 @@
       body {
         font-family: Arial, sans-serif;
       }
+      select {
+  	-webkit-appearance: none;
+      }
       .container {
         max-width: 800px;
         margin: 0 auto;
         padding: 20px;
       }
       .select-type {
-	-webkit-appearance: none;
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -114,7 +116,7 @@
 
   </head>
   <body>
-    <h2>Decimal Degrees to DMS Converter</h2>
+    <h1>Decimal Degrees to DMS Converter</h1>
     <p>Enter latitude and longitude in decimal degrees or DMS:</p>
 	<select id="type" name="type">
       		<option value="decimal-to-dms">Convert Decimal Degrees to DMS</option>
