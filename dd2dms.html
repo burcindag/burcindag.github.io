@@ -14,6 +14,7 @@
         padding: 20px;
       }
       .select-type {
+	-webkit-appearance: none;
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -39,6 +40,7 @@
         box-sizing: border-box;
       }
       input[type="submit"] {
+	-webkit-appearance: none;
         background-color: #4caf50;
         color: white;
         padding: 12px 20px;
@@ -116,9 +118,9 @@
     <p>Enter latitude and longitude in decimal degrees or DMS:</p>
 	
 	<select id="type" name="type">
-      <option value="decimal-to-dms">Convert Decimal Degrees to DMS</option>
-      <option value="dms-to-decimal">Convert DMS to Decimal Degrees</option>
-    </select>
+      		<option value="decimal-to-dms">Convert Decimal Degrees to DMS</option>
+      		<option value="dms-to-decimal">Convert DMS to Decimal Degrees</option>
+    	</select>
 	
 	<div id="dd" style="display:block;">
 		<label for="lat">Latitude:</label>
