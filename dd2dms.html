@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coordinate Converter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+	body {
+		font-family: Arial, sans-serif;
+		font-size: 100%;
+	}
+	select {
+		width: 100%;
+		font-size: 1.0em;
+	}
+	h1 {
+		text-align: center;
+	}
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+	.label-type {
+		display: block;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	input[type="text"] {
+		width: 100%;
+		padding: 10px;
+		margin: 10px 0;
+		border: 1px solid #ccc;
+		border-radius: 1px;
+		box-sizing: border-box;
+	}
+	input[type="submit"] {
+		background-color: #4caf50;
+		color: white;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 2px;
+		cursor: pointer;
+		width: 100%;
+	}
+	input[type="submit"]:hover {
+		background-color: #45a049;
+	}
+	.result {
+		margin-top: 20px;
+		font-weight: bold;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+		background-color: #d6eaf8;
+		text-align: center;
+	}
+    </style>
+    <script>
+	  function validateInput() {
+		var type = document.getElementById("type").value;
+		var valid = true;
+
+		if (type === "decimal-to-dms" || type === "decimal-to-ddm") {
+			var lat = document.getElementById("lat").value;
+			var lon = document.getElementById("lon").value;
+			if (isNaN(lat) || lat < -90 || lat > 90) {
+			  alert("Latitude must be a number between -90 and 90 degrees.");
+			  valid = false;
+			}
+			if (isNaN(lon) || lon < -180 || lon > 180) {
+			  alert("Longitude must be a number between -180 and 180 degrees.");
+			  valid = false;
+			}
+		}
+		if (valid) {
+		  convert(type);
+		}
+	  }
+
+      function convert(type) {
+        var result = document.getElementById("result");
+        
+        if (type == "dms-to-decimal") {
+          // DMS → Decimal
+          var dmsLat = document.getElementById("dms-lat").value;
+          var dmsLon = document.getElementById("dms-lon").value;
+          var latArr = dmsLat.split(/[^\d\.]+/);
+          var lonArr = dmsLon.split(/[^\d\.]+/);
+          var lat = parseFloat(latArr[0]) + (parseFloat(latArr[1]) / 60) + (parseFloat(latArr[2]) / 3600);
+          var lon = parseFloat(lonArr[0]) + (parseFloat(lonArr[1]) / 60) + (parseFloat(lonArr[2]) / 3600);
+          result.innerHTML = "Decimal Degrees: " + lat.toFixed(6) + ", " + lon.toFixed(6);
+
+        } else if (type == "decimal-to-dms") {
+          // Decimal → DMS
+          var lat = parseFloat(document.getElementById("lat").value);
+          var lon = parseFloat(document.getElementById("lon").value);
+          var latDeg = Math.floor(lat);
+          var latMin = Math.floor((lat - latDeg) * 60);
+          var latSec = ((lat - latDeg - latMin / 60) * 3600).toFixed(4);
+          var lonDeg = Math.floor(lon);
+          var lonMin = Math.floor((lon - lonDeg) * 60);
+          var lonSec = ((lon - lonDeg - lonMin / 60) * 3600).toFixed(4);
+          result.innerHTML = "DMS: " + latDeg + "° " + latMin + "' " + latSec + "\" " + (lat < 0 ? "S" : "N") + ", " +
+            lonDeg + "° " + lonMin + "' " + lonSec + "\" " + (lon < 0? "W" : "E");
+
+        } else if (type == "decimal-to-ddm") {
+          // Decimal → Degree Decimal Minutes
+          var lat = parseFloat(document.getElementById("lat").value);
+          var lon = parseFloat(document.getElementById("lon").value);
+          var latDeg = Math.floor(lat);
+          var latMin = ((lat - latDeg) * 60).toFixed(4);
+          var lonDeg = Math.floor(lon);
+          var lonMin = ((lon - lonDeg) * 60).toFixed(4);
+          result.innerHTML = "Degree Decimal Minutes: " + latDeg + "° " + latMin + "' " + (lat < 0 ? "S" : "N") + ", " +
+            lonDeg + "° " + lonMin + "' " + (lon < 0 ? "W" : "E");
+        }
+	  }
+    </script>
+  </head>
+  <body>
+    <h1>Coordinate Converter</h1>
+    <p>Enter latitude and longitude:</p>
+	<select id="type" name="type">
+      		<option value="decimal-to-dms">Convert Decimal Degrees to DMS</option>
+      		<option value="dms-to-decimal">Convert DMS to Decimal Degrees</option>
+      		<option value="decimal-to-ddm">Convert Decimal Degrees to Degree Decimal Minutes</option>
+    	</select>
+	<br><br>
+	<div id="dd" style="display:block;">
+		<label for="lat">Latitude:</label>
+		<input type="text" id="lat" name="lat" value="39.925533"/>
+		<label for="lon">Longitude:</label>
+		<input type="text" id="lon" name="lon" value="32.866287"/>
+	</div>
+
+    <div id="dms" style="display:none;">
+      <label for="dms-lat">Latitude (DMS):</label>
+      <input type="text" id="dms-lat" name="dms-lat" value="39° 55' 31.9188&quot; N"/>
+      <label for="dms-lon">Longitude (DMS):</label>
+      <input type="text" id="dms-lon" name="dms-lon" value="32° 51' 58.6332&quot; E"/>
+    </div>
+
+    <input type="submit" value="Convert" onclick="validateInput();" />
+    <div class="result" id="result"></div>
+    <script>
+      document.getElementById("type").addEventListener("change", function() {
+        var dms = document.getElementById("dms");
+		var dd = document.getElementById("dd");
+        if (this.value == "dms-to-decimal") {
+          dms.style.display = "block";
+		  dd.style.display = "none";
+        } else {
+          dms.style.display = "none";
+		  dd.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>
