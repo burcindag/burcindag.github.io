@@ -54,6 +54,22 @@
 		background-color: #d6eaf8;
 		text-align: center;
 	}
+	.return-button {
+	    display: inline-block;
+	    background-color: #f44336;
+	    color: white;
+	    padding: 12px 20px;
+	    border: none;
+	    border-radius: 2px;
+	    cursor: pointer;
+	    width: 100%;
+	    text-align: center;
+	    text-decoration: none;
+	    margin-top: 10px;
+  	}
+  	.return-button:hover {
+    	background-color: #d32f2f;
+  	}
     </style>
     <script>
 	  function validateInput() {
@@ -142,6 +158,7 @@
 
     <input type="submit" value="Convert" onclick="validateInput();" />
     <div class="result" id="result"></div>
+	<a href="/" class="return-button">Return Home</a>
     <script>
       document.getElementById("type").addEventListener("change", function() {
         var dms = document.getElementById("dms");
