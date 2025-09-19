@@ -1,0 +1,133 @@
+/* Universal Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+/* Main Content Styles */
+main {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: -80px;
+}
+
+main p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Link Styles */
+a {
+    display: flex; /* Changed to flexbox for icon alignment */
+    align-items: center; /* Vertically center icon and text */
+    padding: 1.5rem 2rem;
+    background-color: #e9ecef;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+a:hover {
+    background-color: #cfe2ff;
+    transform: translateY(-3px);
+}
+
+/* GitHub Link specific styles */
+a.github-link {
+    background-color: #333; /* Dark background for GitHub */
+    color: white;
+}
+
+a.github-link:hover {
+    background-color: #555;
+}
+
+.fa-github {
+    font-size: 1.5rem; /* Icon size */
+    margin-right: 0.75rem; /* Space between icon and text */
+}
+
+/* ---------------------------------- */
+/* Mobile Responsiveness         */
+/* ---------------------------------- */
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding-top: 2rem;
+    }
+
+    header {
+        border-radius: 0;
+        padding: 1.5rem 0;
+        margin-bottom: 0;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 2rem;
+        margin-top: 0;
+    }
+
+    main p {
+        font-size: 1.2rem;
+    }
+
+    a {
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    .fa-github {
+        font-size: 1.2rem; /* Adjusted icon size for mobile */
+        margin-right: 0.5rem;
+    }
+}
