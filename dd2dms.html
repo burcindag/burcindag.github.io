@@ -219,12 +219,13 @@
   </head>
   <body>
     <h1>Coordinate Converter</h1>
-    <p>Enter latitude and longitude:</p>
+    <p>Enter latitude (N) and longitude (E):</p>
 	<select id="type" name="type">
-      		<option value="decimal-to-dms">Decimal Degrees → DMS Dönüştür</option>
-      		<option value="dms-to-decimal">DMS → Decimal Degrees Dönüştür</option>
-          <option value="dms-to-ddm">DMS → Degree Decimal Minutes Dönüştür</option> <option value="decimal-to-ddm">Decimal Degrees → Degree Decimal Minutes Dönüştür</option>
-    	</select>
+      		<option value="decimal-to-dms">Convert Decimal Degrees to DMS</option>
+      		<option value="dms-to-decimal">Convert DMS to Decimal Degrees</option>
+            <option value="dms-to-ddm">Convert DMS to Degree Decimal Minutes</option> 
+		    <option value="decimal-to-ddm">Convert Decimal Degrees to Degree Decimal Minutes</option>
+    </select>
 	<br><br>
 	<div id="dd" style="display:block;">
 		<label for="lat">Latitude (Decimal Degrees):</label>
@@ -238,7 +239,7 @@
       <input type="text" id="dms-lat" name="dms-lat" value="39° 55' 30.1980&quot; N"/>
       <label for="dms-lon">Longitude (DMS):</label>
       <input type="text" id="dms-lon" name="dms-lon" value="32° 50' 13.4808&quot; E"/>
-      <p style="font-size:0.9em; color:#666;">*Örnek format: 39° 55' 30.1980" N</p>
+      <p style="font-size:0.9em; color:#666;">* Sample: 39° 55' 30.1980" N</p>
     </div>
 
     <input type="submit" value="CONVERT" onclick="validateInput();" />
